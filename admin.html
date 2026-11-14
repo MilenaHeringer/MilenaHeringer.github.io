@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel · Milena Heringer</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,600&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/styles.css?v=5">
+<link rel="stylesheet" href="css/admin.css?v=5">
+</head>
+<body class="admin">
+  <header class="a-top">
+    <a class="brand" href="index.html" title="Ver o site">
+      <span class="brand-dot"><img src="assets/avatar-96.webp" alt="" width="40" height="40"></span>
+      <span class="brand-name">Painel <b>Milena</b></span>
+    </a>
+    <div class="a-actions" id="a-actions" hidden>
+      <span class="a-status" id="a-status" aria-live="polite"></span>
+      <button class="btn btn-ghost btn-sm" id="btn-export" type="button">Baixar content.json</button>
+      <button class="btn btn-wine btn-sm" id="btn-save" type="button">Salvar alterações</button>
+      <button class="btn btn-ghost btn-sm" id="btn-logout" type="button" hidden>Sair</button>
+    </div>
+  </header>
+
+  <main class="a-main">
+    <section class="a-card a-login" id="view-login" hidden>
+      <h1>Entrar no painel</h1>
+      <p>Use o e-mail e a senha cadastrados no Supabase.</p>
+      <form id="login-form" autocomplete="on">
+        <label>E-mail<input type="email" name="email" required autocomplete="username"></label>
+        <label>Senha<input type="password" name="password" required autocomplete="current-password"></label>
+        <button class="btn btn-wine" type="submit">Entrar</button>
+        <p class="a-error" id="login-error" role="alert"></p>
+      </form>
+    </section>
+
+    <section class="a-card a-notice" id="view-setup" hidden>
+      <h1>Como atualizar o site (GitHub)</h1>
+      <p><b>1.</b> Edite textos, resumos, livros, vídeos e redes nas abas abaixo. Em PDFs, capas e vídeos, clique em <b>Escolher</b>: o caminho é preenchido sozinho.</p>
+      <p><b>2.</b> Clique em <b>Salvar (baixar content.json)</b>.</p>
+      <p><b>3.</b> No GitHub, envie o <code>content.json</code> baixado para a pasta <code>data/</code> e os arquivos novos para as pastas indicadas (<code>materiais/</code>, <code>capas/</code>, <code>livros/</code>, <code>videos/</code>). Em 1–2 minutos o site atualiza. O passo a passo completo está em <b>COMO-PUBLICAR-NO-GITHUB.md</b>.</p>
+      <button class="btn btn-wine btn-sm" id="btn-demo" type="button">Editar mesmo assim</button>
+    </section>
+
+    <section id="view-editor" hidden>
+      <nav class="a-tabs" id="a-tabs" role="tablist" aria-label="Seções do site"></nav>
+      <div class="a-panel" id="a-panel" role="tabpanel"></div>
+    </section>
+  </main>
+
+  <div class="a-toast" id="a-toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/admin.js?v=5"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Milena Heringer · Odontologia, música, receitas e games</title>
+<meta name="description" content="O cantinho da Milena Heringer: acadêmica de Odontologia, pianista e apaixonada por estudar. Resumos de Odontologia, estante de livros, trajetória e um pouco da rotina.">
+<meta name="theme-color" content="#FAF9F7">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cdn.jsdelivr.net; frame-src https://www.youtube-nocookie.com; media-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Milena Heringer · meu cantinho">
+<meta property="og:description" content="Odontologia, música, receitas e games — resumos, livros e um pouco da minha rotina.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="preload" as="image" href="assets/boneca.webp">
+<link rel="stylesheet" href="css/styles.css?v=5">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Milena Heringer","description":"Acadêmica de Odontologia, pianista e criadora de conteúdo.","knowsAbout":["Odontologia","Cirurgia e Traumatologia Bucomaxilofacial","Piano","Culinária","Games"]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<div class="loader" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44"/></svg>
+</div>
+
+<header class="nav" id="topo">
+  <a class="brand" href="#inicio" aria-label="Milena Heringer — início">
+    <span class="brand-dot"><img src="assets/avatar-96.webp" alt="" width="40" height="40"></span>
+    <span class="brand-name">Milena <b>Heringer</b></span>
+  </a>
+  <nav class="menu" id="menu" aria-label="Seções do site">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre mim</a>
+    <a href="#trajetoria">Trajetória</a>
+    <a href="#planos">Planos futuros</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#resumos">Resumos</a>
+    <a href="#livros">Livros</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <button class="burger" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+</header>
+
+<main id="conteudo">
+  <!-- 1 · INÍCIO -->
+  <section class="hero" id="inicio" aria-labelledby="hero-name">
+    <div class="hero-pattern" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="portrait" aria-hidden="true">
+        <div class="portrait-glow"></div>
+        <div class="portrait-disc"></div>
+        <svg class="portrait-ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/></svg>
+        <svg class="portrait-orbit" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/></svg>
+        <canvas class="doll" width="700" height="700"></canvas>
+        <div class="orbit">
+          <span class="badge b1"><i data-icon="tooth"></i></span>
+          <span class="badge b2"><i data-icon="pad"></i></span>
+          <span class="badge b3"><i data-icon="whisk"></i></span>
+          <span class="badge b4"><i data-icon="notes"></i></span>
+        </div>
+      </div>
+      <div class="hero-text">
+        <p class="kicker" data-bind="hero.kicker">Odontologia · Música · Receitas · Games</p>
+        <h1 id="hero-name" class="name"><span>Milena</span><span>Heringer</span></h1>
+        <div class="rule" aria-hidden="true"><i></i><b></b><i></i></div>
+        <p class="phrase" data-bind="hero.phrase"></p>
+        <div class="hero-cta">
+          <a class="btn btn-wine" href="#sobre"><span data-bind="hero.ctaPrimary">Conheça meu cantinho</span><span class="btn-ic" data-icon="arrow"></span></a>
+          <a class="btn btn-ghost" id="cta-instagram" target="_blank" rel="noopener" hidden><span class="btn-ic" data-icon="instagram"></span><span data-bind="hero.ctaInstagram">Me acompanhe no Instagram</span></a>
+        </div>
+      </div>
+    </div>
+    <a class="scroll-hint" href="#sobre" aria-label="Rolar para Sobre mim"><span></span></a>
+  </section>
+
+  <!-- 2 · SOBRE MIM -->
+  <section class="about section" id="sobre" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <figure class="polaroid reveal">
+        <span class="tape" aria-hidden="true"></span>
+        <img id="about-photo" src="" alt="" width="768" height="1280" loading="lazy" decoding="async">
+        <figcaption data-bind="about.photoCaption"></figcaption>
+      </figure>
+      <article class="diary reveal">
+        <p class="eyebrow" data-bind="about.eyebrow">Sobre mim</p>
+        <h2 id="about-title" class="hand" data-bind="about.title"></h2>
+        <div class="diary-text" id="about-text"></div>
+        <ul class="stickers" id="about-tags" aria-label="Um pouco sobre mim"></ul>
+        <p class="sign" aria-hidden="true">com carinho, Mi ♡</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3 · TRAJETÓRIA -->
+  <section class="journey section" id="trajetoria" aria-labelledby="journey-title">
+    <div class="journey-pattern" aria-hidden="true"></div>
+    <div class="wrap">
+      <header class="sec-head light reveal">
+        <p class="eyebrow">Minha trajetória acadêmica e conquistas</p>
+        <h2 id="journey-title" class="title" data-bind="journey.title"></h2>
+        <p class="lead" data-bind="journey.subtitle"></p>
+      </header>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- 4 · PLANOS FUTUROS -->
+  <section class="future section" id="planos" aria-labelledby="future-title">
+    <div class="wrap future-grid">
+      <div class="future-art reveal" aria-hidden="true" id="future-art"></div>
+      <div class="future-text reveal">
+        <p class="eyebrow">Planos futuros</p>
+        <h2 id="future-title" class="title" data-bind="future.title"></h2>
+        <div id="future-text"></div>
+        <a class="plan-card" id="plan-card" target="_blank" rel="noopener" hidden>
+          <span class="plan-ic" data-icon="calendar"></span>
+          <span><b data-bind="future.planTitle"></b><small data-bind="future.planText"></small></span>
+          <span class="plan-go" data-icon="external"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · HOBBIES -->
+  <section class="hobbies section" id="hobbies" aria-labelledby="hobbies-title">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Hobbies</p>
+        <h2 id="hobbies-title" class="title" data-bind="hobbiesTitle"></h2>
+      </header>
+      <div class="bento" id="hobbies-grid"></div>
+    </div>
+  </section>
+
+  <!-- 6 · RESUMOS -->
+  <section class="study section" id="resumos" aria-labelledby="study-title">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Resumos de Odontologia</p>
+        <h2 id="study-title" class="title" data-bind="study.title"></h2>
+        <div class="lead-block" id="study-text"></div>
+      </header>
+      <div class="library-tools reveal">
+        <label class="search">
+          <span class="sr-only">Pesquisar resumos</span>
+          <span data-icon="search"></span>
+          <input id="study-search" type="search" placeholder="Pesquisar por disciplina, tema…" autocomplete="off">
+        </label>
+        <div class="chips" id="study-filters" role="group" aria-label="Filtrar por disciplina"></div>
+      </div>
+      <p class="result-count" id="study-count" aria-live="polite"></p>
+      <div class="library" id="study-grid"></div>
+      <p class="disclaimer" data-bind="study.disclaimer"></p>
+    </div>
+  </section>
+
+  <!-- 7 · LIVROS -->
+  <section class="books section" id="livros" aria-labelledby="books-title">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Livros de Odontologia</p>
+        <h2 id="books-title" class="title" data-bind="books.title"></h2>
+        <div class="lead-block" id="books-text"></div>
+      </header>
+      <div class="shelf reveal" id="shelf"></div>
+    </div>
+  </section>
+
+  <!-- 8 · VÍDEOS -->
+  <section class="videos section" id="videos" aria-labelledby="videos-title">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Vídeos em destaque</p>
+        <h2 id="videos-title" class="title" data-bind="videos.title"></h2>
+        <p class="lead" data-bind="videos.text"></p>
+      </header>
+      <div class="chips reveal" id="video-filters" role="group" aria-label="Filtrar vídeos"></div>
+      <div class="video-grid" id="video-grid"></div>
+    </div>
+  </section>
+
+  <!-- 9 · CONTATO E PARCERIAS -->
+  <section class="talk section" id="contato" aria-labelledby="talk-title">
+    <div class="wrap talk-grid">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Contato e parcerias</p>
+        <h2 id="talk-title" class="title" data-bind="contact.title"></h2>
+        <p class="lead" data-bind="contact.text"></p>
+      </header>
+      <div class="talk-cards" id="talk-cards"></div>
+    </div>
+  </section>
+
+  <!-- 10 · REDES -->
+  <section class="contact section" id="redes" aria-labelledby="contact-title">
+    <div class="wrap contact-inner reveal">
+      <img class="contact-avatar" src="assets/avatar-240.webp" alt="" width="120" height="120" loading="lazy">
+      <h2 id="contact-title" class="title" data-bind="closing.title"></h2>
+      <div class="socials" id="socials"></div>
+      <p class="closing hand" data-bind="closing.text"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="signature" aria-hidden="true">
+    <span class="sig-line"></span>
+    <span class="sig-icons"><i data-icon="tooth"></i><b></b><i data-icon="pad"></i><b></b><i data-icon="whisk"></i><b></b><i data-icon="notes"></i></span>
+    <span class="sig-line"></span>
+  </div>
+  <p class="footer-name">MILENA HERINGER</p>
+  <p class="footer-small">© <span id="year"></span> Milena Heringer · <a href="#inicio">voltar ao topo</a></p>
+</footer>
+
+<dialog class="modal" id="modal" aria-labelledby="modal-title">
+  <button class="modal-x" data-close aria-label="Fechar"></button>
+  <div class="modal-body" id="modal-body"></div>
+</dialog>
+
+<noscript><p class="noscript">Para ver todo o conteúdo do site, ative o JavaScript do navegador.</p></noscript>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
