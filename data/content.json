@@ -18,7 +18,14 @@
       "Mais do que compartilhar materiais, quero construir um espaço onde a gente possa aprender, trocar experiências e descobrir coisas novas juntos.",
       "Fiquem à vontade, explorem o site e sejam muito bem-vindos ao meu cantinho!"
     ],
-    "tags": ["acadêmica de Odontologia", "pianista", "evangélica", "gamer péssima (mas que tenta!)", "ótima cozinheira", "ama estudar"]
+    "tags": [
+      "acadêmica de Odontologia",
+      "pianista",
+      "evangélica",
+      "gamer péssima (mas que tenta!)",
+      "ótima cozinheira",
+      "ama estudar"
+    ]
   },
   "journey": {
     "title": "Uma trajetória construída com sonhos, dedicação e algumas conquistas pelo caminho!",
@@ -32,10 +39,26 @@
       "tag": "Aprovações em Odontologia",
       "title": "Quatro aprovações em processos seletivos (SISU e PROUNI) para Odontologia",
       "items": [
-        { "short": "UFMG", "name": "Universidade Federal de Minas Gerais", "note": "" },
-        { "short": "UNIFAL-MG", "name": "Universidade Federal de Alfenas", "note": "" },
-        { "short": "UIT", "name": "Universidade de Itaúna", "note": "ProUni 100%" },
-        { "short": "Newton Paiva", "name": "Newton Paiva", "note": "ProUni 100%" }
+        {
+          "short": "UFMG",
+          "name": "Universidade Federal de Minas Gerais",
+          "note": ""
+        },
+        {
+          "short": "UNIFAL-MG",
+          "name": "Universidade Federal de Alfenas",
+          "note": ""
+        },
+        {
+          "short": "UIT",
+          "name": "Universidade de Itaúna",
+          "note": "ProUni 100%"
+        },
+        {
+          "short": "Newton Paiva",
+          "name": "Newton Paiva",
+          "note": "ProUni 100%"
+        }
       ]
     },
     "contest": {
@@ -64,18 +87,48 @@
       "Quero compartilhar esse caminho com vocês: os estudos, os desafios, as conquistas, a preparação para as provas e, quem sabe, um dia, a rotina de uma residente!",
       "Afinal, ainda temos uma longa jornada pela frente."
     ],
-    "steps": ["Graduação em Odontologia", "Preparação para as provas", "Residência em CTBMF", "Cirurgiã bucomaxilofacial"],
+    "steps": [
+      "Graduação em Odontologia",
+      "Preparação para as provas",
+      "Residência em CTBMF",
+      "Cirurgiã bucomaxilofacial"
+    ],
     "planTitle": "Meu cronograma de estudos para o ENARE",
     "planText": "O planejamento que estou seguindo rumo à residência, com foco em Cirurgia e Traumatologia Bucomaxilofacial.",
     "planPdf": "materiais/cronograma-enare-odontologia.pdf"
   },
   "hobbiesTitle": "Um pouco de tudo que faz parte de mim ♡",
   "hobbies": [
-    { "id": "piano", "title": "Piano", "icon": "piano", "text": "Aprendi a tocar piano aos 13 anos, sozinha, de ouvido, experimentando acordes e movida por muita curiosidade. Tenho uma relação muito especial com a música. Sempre que descubro uma música nova, minha primeira vontade é tentar aprender a tocá-la!" },
-    { "id": "cozinhar", "title": "Cozinhar", "icon": "whisk", "text": "Comecei a cozinhar ainda criança e sempre amei estar na cozinha. Gosto especialmente de preparar doces! Para mim, cozinhar é uma forma de relaxar, experimentar e demonstrar carinho." },
-    { "id": "games", "title": "Videogames", "icon": "pad", "text": "Jogo videogame desde pequena, mas minha paixão pelos jogos aumentou bastante nos últimos anos. Meu jogo favorito é The Witcher 3: Wild Hunt. E sim, sou uma gamer bem questionável, mas me divirto mesmo assim!" },
-    { "id": "estudar", "title": "Estudar", "icon": "book", "text": "Tenho uma curiosidade enorme sobre o mundo e adoro aprender coisas novas. Gosto de estudar, pesquisar assuntos aleatórios e descobrir como as coisas funcionam. Claro que existem dias em que a disposição não acompanha a vontade KKKKKKKKK." },
-    { "id": "violao", "title": "Violão e música", "icon": "guitar", "text": "Além de tocar piano, estou aprendendo violão. Amo ouvir música e descobrir novas melodias." }
+    {
+      "id": "piano",
+      "title": "Piano",
+      "icon": "piano",
+      "text": "Aprendi a tocar piano aos 13 anos, sozinha, de ouvido, experimentando acordes e movida por muita curiosidade. Tenho uma relação muito especial com a música. Sempre que descubro uma música nova, minha primeira vontade é tentar aprender a tocá-la!"
+    },
+    {
+      "id": "cozinhar",
+      "title": "Cozinhar",
+      "icon": "whisk",
+      "text": "Comecei a cozinhar ainda criança e sempre amei estar na cozinha. Gosto especialmente de preparar doces! Para mim, cozinhar é uma forma de relaxar, experimentar e demonstrar carinho."
+    },
+    {
+      "id": "games",
+      "title": "Videogames",
+      "icon": "pad",
+      "text": "Jogo videogame desde pequena, mas minha paixão pelos jogos aumentou bastante nos últimos anos. Meu jogo favorito é The Witcher 3: Wild Hunt. E sim, sou uma gamer bem questionável, mas me divirto mesmo assim!"
+    },
+    {
+      "id": "estudar",
+      "title": "Estudar",
+      "icon": "book",
+      "text": "Tenho uma curiosidade enorme sobre o mundo e adoro aprender coisas novas. Gosto de estudar, pesquisar assuntos aleatórios e descobrir como as coisas funcionam. Claro que existem dias em que a disposição não acompanha a vontade KKKKKKKKK."
+    },
+    {
+      "id": "violao",
+      "title": "Violão e música",
+      "icon": "guitar",
+      "text": "Além de tocar piano, estou aprendendo violão. Amo ouvir música e descobrir novas melodias."
+    }
   ],
   "study": {
     "title": "Meu cantinho de estudos 🦷📚",
@@ -86,15 +139,94 @@
     ],
     "disclaimer": "Os materiais são complementares e não substituem livros, aulas ou orientações dos professores."
   },
-  "categories": ["Anatomia", "Histologia e Embriologia", "Bioquímica", "Fisiologia", "Microbiologia", "Anatomia Dental", "Materiais Odontológicos", "Outras disciplinas"],
+  "categories": [
+    "Anatomia",
+    "Histologia e Embriologia",
+    "Bioquímica",
+    "Fisiologia",
+    "Microbiologia",
+    "Anatomia Dental",
+    "Materiais Odontológicos",
+    "Outras disciplinas"
+  ],
   "materials": [
-    { "id": "bioquimica", "title": "Bioquímica", "category": "Bioquímica", "period": "1º semestre", "pages": 47, "description": "Resumo da disciplina de Bioquímica, começando pela lógica da vida e o metabolismo: catabolismo, anabolismo e como o organismo gerencia energia.", "cover": "", "pdf": "materiais/bioquimica.pdf", "links": [] },
-    { "id": "histologia", "title": "Histologia", "category": "Histologia e Embriologia", "period": "1º semestre", "pages": 68, "description": "Anotações e resumos das aulas teóricas de Histologia, começando pelo tecido epitelial e suas características.", "cover": "", "pdf": "materiais/histologia-1-semestre.pdf", "links": [] },
-    { "id": "citologia-embriologia", "title": "Citologia e Embriologia", "category": "Histologia e Embriologia", "period": "1º semestre", "pages": 66, "description": "Resumo de Citologia e Embriologia, começando pela membrana plasmática e o modelo do mosaico fluido.", "cover": "", "pdf": "materiais/citologia-e-embriologia.pdf", "links": [] },
-    { "id": "biosseguranca", "title": "Biossegurança", "category": "Outras disciplinas", "period": "1º semestre", "pages": 29, "description": "Imunização e controle microbiano em Odontologia: conceito de biossegurança e as medidas para prevenir e controlar riscos no atendimento.", "cover": "", "pdf": "materiais/biosseguranca.pdf", "links": [] },
-    { "id": "esbv", "title": "Emergências e Suporte Básico de Vida (ESBV)", "category": "Outras disciplinas", "period": "1º semestre", "pages": 25, "description": "Emergências médicas em Odontologia e suporte básico de vida, partindo dos princípios gerais do atendimento.", "cover": "", "pdf": "materiais/esbv-1-semestre.pdf", "links": [] },
-    { "id": "introducao", "title": "Introdução à Odontologia", "category": "Outras disciplinas", "period": "1º semestre", "pages": 21, "description": "Resumo de Introdução à Odontologia, começando pela estrutura do dente e do periodonto.", "cover": "", "pdf": "materiais/introducao-a-odontologia.pdf", "links": [] },
-    { "id": "cronograma-enare", "title": "Cronograma de estudos ENARE (2026–2028)", "category": "Outras disciplinas", "period": "Planejamento", "pages": 6, "description": "Meu cronograma de estudos para o ENARE Odontologia, com foco futuro em Cirurgia e Traumatologia Bucomaxilofacial.", "cover": "", "pdf": "materiais/cronograma-enare-odontologia.pdf", "links": [] }
+    {
+      "id": "bioquimica",
+      "title": "Bioquímica",
+      "category": "Bioquímica",
+      "period": "1º semestre",
+      "pages": 47,
+      "description": "Resumo da disciplina de Bioquímica, começando pela lógica da vida e o metabolismo: catabolismo, anabolismo e como o organismo gerencia energia.",
+      "cover": "",
+      "pdf": "materiais/bioquimica.pdf",
+      "links": []
+    },
+    {
+      "id": "histologia",
+      "title": "Histologia",
+      "category": "Histologia e Embriologia",
+      "period": "1º semestre",
+      "pages": 68,
+      "description": "Anotações e resumos das aulas teóricas de Histologia, começando pelo tecido epitelial e suas características.",
+      "cover": "",
+      "pdf": "materiais/histologia-1-semestre.pdf",
+      "links": []
+    },
+    {
+      "id": "citologia-embriologia",
+      "title": "Citologia e Embriologia",
+      "category": "Histologia e Embriologia",
+      "period": "1º semestre",
+      "pages": 66,
+      "description": "Resumo de Citologia e Embriologia, começando pela membrana plasmática e o modelo do mosaico fluido.",
+      "cover": "",
+      "pdf": "materiais/citologia-e-embriologia.pdf",
+      "links": []
+    },
+    {
+      "id": "biosseguranca",
+      "title": "Biossegurança",
+      "category": "Outras disciplinas",
+      "period": "1º semestre",
+      "pages": 29,
+      "description": "Imunização e controle microbiano em Odontologia: conceito de biossegurança e as medidas para prevenir e controlar riscos no atendimento.",
+      "cover": "",
+      "pdf": "materiais/biosseguranca.pdf",
+      "links": []
+    },
+    {
+      "id": "esbv",
+      "title": "Emergências e Suporte Básico de Vida (ESBV)",
+      "category": "Outras disciplinas",
+      "period": "1º semestre",
+      "pages": 25,
+      "description": "Emergências médicas em Odontologia e suporte básico de vida, partindo dos princípios gerais do atendimento.",
+      "cover": "",
+      "pdf": "materiais/esbv-1-semestre.pdf",
+      "links": []
+    },
+    {
+      "id": "introducao",
+      "title": "Introdução à Odontologia",
+      "category": "Outras disciplinas",
+      "period": "1º semestre",
+      "pages": 21,
+      "description": "Resumo de Introdução à Odontologia, começando pela estrutura do dente e do periodonto.",
+      "cover": "",
+      "pdf": "materiais/introducao-a-odontologia.pdf",
+      "links": []
+    },
+    {
+      "id": "cronograma-enare",
+      "title": "Cronograma de estudos ENARE (2026–2028)",
+      "category": "Outras disciplinas",
+      "period": "Planejamento",
+      "pages": 6,
+      "description": "Meu cronograma de estudos para o ENARE Odontologia, com foco futuro em Cirurgia e Traumatologia Bucomaxilofacial.",
+      "cover": "",
+      "pdf": "materiais/cronograma-enare-odontologia.pdf",
+      "links": []
+    }
   ],
   "books": {
     "title": "Minha estante odontológica 📖",
@@ -104,20 +236,64 @@
       "Aos poucos, minha estante virtual vai crescendo, e espero que ela também possa ajudar vocês a encontrarem boas referências para os estudos."
     ],
     "items": [
-      { "id": "netter", "title": "Atlas de Anatomia Humana", "author": "Frank H. Netter", "area": "Anatomia", "edition": "5ª edição", "description": "Atlas de anatomia humana ilustrado, referência para os estudos de Anatomia.", "cover": "", "url": "" }
+      {
+        "id": "netter",
+        "title": "Atlas de Anatomia Humana",
+        "author": "Frank H. Netter",
+        "area": "Anatomia",
+        "edition": "5ª edição",
+        "description": "Atlas de anatomia humana ilustrado, referência para os estudos de Anatomia.",
+        "cover": "",
+        "url": "https://drive.google.com/file/d/1S1OiZnOgajwChuAfktVjl4UcCzOVUFEl/view?usp=drive_link"
+      },
+      {
+        "title": "Novo livro",
+        "author": "",
+        "area": "",
+        "edition": "",
+        "description": "",
+        "cover": "",
+        "url": "",
+        "id": "novo-livro-mwft0uba"
+      }
     ]
   },
   "videos": {
     "title": "Um pouco da minha rotina em vídeos! 🎬",
     "text": "Por aqui você encontra alguns dos conteúdos que compartilho nas redes sociais: rotina universitária, estudos, curiosidades sobre Odontologia, experiências na graduação e outros assuntos que fazem parte do meu dia a dia.",
-    "categories": ["Rotina universitária", "Estudos", "Odontologia", "Curiosidades"],
+    "categories": [
+      "Rotina universitária",
+      "Estudos",
+      "Odontologia",
+      "Curiosidades"
+    ],
     "items": []
   },
   "socials": [
-    { "network": "instagram", "label": "Instagram · Odonto", "handle": "@odonto_withmiih", "url": "https://www.instagram.com/odonto_withmiih/" },
-    { "network": "instagram", "label": "Instagram · Pessoal", "handle": "@milena_heringer_", "url": "https://www.instagram.com/milena_heringer_/" },
-    { "network": "tiktok", "label": "TikTok", "handle": "@milena_heringer_", "url": "https://www.tiktok.com/@milena_heringer_" },
-    { "network": "youtube", "label": "YouTube", "handle": "@Miiiiiihhhhhh", "url": "https://www.youtube.com/@Miiiiiihhhhhh" }
+    {
+      "network": "instagram",
+      "label": "Instagram · Odonto",
+      "handle": "@odonto_withmiih",
+      "url": "https://www.instagram.com/odonto_withmiih/"
+    },
+    {
+      "network": "instagram",
+      "label": "Instagram · Pessoal",
+      "handle": "@milena_heringer_",
+      "url": "https://www.instagram.com/milena_heringer_/"
+    },
+    {
+      "network": "tiktok",
+      "label": "TikTok",
+      "handle": "@milena_heringer_",
+      "url": "https://www.tiktok.com/@milena_heringer_"
+    },
+    {
+      "network": "youtube",
+      "label": "YouTube",
+      "handle": "@Miiiiiihhhhhh",
+      "url": "https://www.youtube.com/@Miiiiiihhhhhh"
+    }
   ],
   "contact": {
     "title": "Vamos conversar?",
@@ -126,8 +302,16 @@
     "whatsapp": "5537998214348",
     "whatsappLabel": "(37) 99821-4348",
     "directs": [
-      { "label": "Direct · Odonto", "handle": "@odonto_withmiih", "url": "https://ig.me/m/odonto_withmiih" },
-      { "label": "Direct · Pessoal", "handle": "@milena_heringer_", "url": "https://ig.me/m/milena_heringer_" }
+      {
+        "label": "Direct · Odonto",
+        "handle": "@odonto_withmiih",
+        "url": "https://ig.me/m/odonto_withmiih"
+      },
+      {
+        "label": "Direct · Pessoal",
+        "handle": "@milena_heringer_",
+        "url": "https://ig.me/m/milena_heringer_"
+      }
     ],
     "partnersTitle": "Parcerias",
     "partnersText": "Tem uma marca, curso ou projeto ligado à Odontologia e aos estudos? Adoraria conhecer! Mande sua proposta por e-mail ou WhatsApp."
