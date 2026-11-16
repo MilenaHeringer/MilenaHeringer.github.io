@@ -172,7 +172,21 @@
         <h2 id="books-title" class="title" data-bind="books.title"></h2>
         <div class="lead-block" id="books-text"></div>
       </header>
-      <div class="shelf reveal" id="shelf"></div>
+      <div class="library-tools reveal">
+        <label class="search">
+          <span class="sr-only">Pesquisar livros</span>
+          <span data-icon="search"></span>
+          <input id="book-search" type="search" placeholder="Pesquisar por título, autor, área…" autocomplete="off">
+        </label>
+        <div class="chips" id="book-filters" role="group" aria-label="Filtrar livros por área"></div>
+      </div>
+      <p class="result-count" id="book-count" aria-live="polite"></p>
+      <div class="bookcase reveal">
+        <button class="shelf-nav shelf-nav--prev" type="button" aria-label="Rolar a estante para a esquerda" data-dir="-1"></button>
+        <div class="shelf" id="shelf" tabindex="0" aria-label="Estante de livros"></div>
+        <button class="shelf-nav shelf-nav--next" type="button" aria-label="Rolar a estante para a direita" data-dir="1"></button>
+      </div>
+      <p class="shelf-hint">Use a fitinha dourada de um livro para guardá-lo nos seus <b>marcados</b>.</p>
     </div>
   </section>
 

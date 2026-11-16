@@ -328,6 +328,15 @@ function renderStudy(c) {
 }
 
 // ───────────── books ─────────────
+const MARKS_KEY = 'estante:marcados';
+const marks = (() => {
+  let set = new Set();
+  try { set = new Set(JSON.parse(localStorage.getItem(MARKS_KEY) || '[]')); } catch { /* storage off */ }
+  const save = () => { try { localStorage.setItem(MARKS_KEY, JSON.stringify([...set])); } catch { /* storage off */ } };
+  return { has: id => set.has(id), size: () => set.size, toggle(id) { set.has(id) ? set.delete(id) : set.add(id); save(); return set.has(id); } };
+})();
+const bookId = (b, i) => b.id || `${b.title}|${b.author}|${i}`;
+
 function bookCover(b) {
   const [c1, c2] = colorsFor(b.area);
   const img = safeUrl(b.cover);
@@ -337,22 +346,94 @@ function bookCover(b) {
     <span><span class="bk-title">${esc(b.title)}</span><span class="bk-line" style="display:block"></span><span class="bk-author">${esc(b.author)}</span></span>`}
   </div>`;
 }
+const ribbon = (id, title) => {
+  const on = marks.has(id);
+  return `<button class="bk-mark" type="button" data-mark="${esc(id)}" aria-pressed="${on}" aria-label="${on ? 'Desmarcar' : 'Marcar'} ${esc(title)}" title="${on ? 'Tirar dos marcados' : 'Guardar nos marcados'}"></button>`;
+};
+
 function renderBooks(c) {
   const B = c.books || {};
   $('#books-text').innerHTML = paras(B.paragraphs);
-  const items = B.items || [];
-  const slots = Math.max(1, 4 - items.length);
-  $('#shelf').outerHTML = `<div class="reveal"><div class="shelf" id="shelf">
-    ${items.map((b, i) => `<button class="book" data-book="${i}" aria-haspopup="dialog" aria-label="${esc(b.title)}, de ${esc(b.author)} — ver detalhes">
-      ${bookCover(b)}
-    </button>`).join('')}
-    ${Array.from({ length: slots }, () => `<div class="book book--slot" aria-hidden="true"><div class="book-cover">mais livros<br>em breve</div></div>`).join('')}
-  </div><div class="shelf-board"></div></div>`;
-  $('#shelf').addEventListener('click', e => {
+  const raw = (B.items || []).map((b, i) => ({ ...b, _id: bookId(b, i) }));
+  // keep each area together, in the order the areas first appear
+  const areas = [...new Set(raw.map(b => b.area || 'Outros'))];
+  const items = raw.slice().sort((a, b) => areas.indexOf(a.area || 'Outros') - areas.indexOf(b.area || 'Outros'));
+  const byId = new Map(items.map(b => [b._id, b]));
+  const state = { cat: 'Todas', q: '' };
+  const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const shelf = $('#shelf'), filters = $('#book-filters');
+
+  const drawChips = () => {
+    const count = cat => items.filter(b => (b.area || 'Outros') === cat).length;
+    filters.innerHTML = [
+      ['Todas', items.length], ['Marcados', marks.size()], ...areas.map(a => [a, count(a)])
+    ].map(([cat, n]) => `<button class="chip${cat === 'Marcados' ? ' chip--mark' : ''}" aria-pressed="${state.cat === cat}" data-cat="${esc(cat)}">${esc(cat)} <small>${n}</small></button>`).join('');
+  };
+
+  const draw = () => {
+    const q = norm(state.q);
+    const list = items.filter(b =>
+      (state.cat === 'Todas' || (state.cat === 'Marcados' ? marks.has(b._id) : (b.area || 'Outros') === state.cat)) &&
+      (!q || norm([b.title, b.author, b.area, b.edition, b.description].join(' ')).includes(q)));
+    $('#book-count').textContent = list.length ? `${list.length} ${list.length === 1 ? 'livro na estante' : 'livros na estante'}` : '';
+    const groups = state.cat === 'Todas' || state.cat === 'Marcados';
+    let last = null, html = '';
+    list.forEach((b, i) => {
+      const area = b.area || 'Outros';
+      if (groups && area !== last) {
+        html += `<div class="shelf-tag" aria-hidden="true"><span>${esc(area)}</span></div>`;
+        last = area;
+      }
+      html += `<div class="book" style="--tilt:${(i % 5 === 3) ? -2 : 0}deg">
+        <button class="book-open" type="button" data-book="${esc(b._id)}" aria-haspopup="dialog" aria-label="${esc(b.title)}, de ${esc(b.author)} — ver detalhes">${bookCover(b)}</button>
+        ${ribbon(b._id, b.title)}
+      </div>`;
+    });
+    if (!list.length) {
+      html = `<div class="shelf-empty">${state.cat === 'Marcados' && !q
+        ? 'Você ainda não marcou nenhum livro.<br><small>Use a fitinha dourada no canto de cada capa.</small>'
+        : 'Nenhum livro encontrado nessa prateleira.'}</div>`;
+    } else if (state.cat === 'Todas' && !q) {
+      html += `<div class="book book--slot" aria-hidden="true"><div class="book-cover">mais livros<br>em breve</div></div>`;
+    }
+    shelf.innerHTML = html;
+    shelf.scrollLeft = 0;
+    updateNav();
+  };
+
+  const navs = $$('.shelf-nav');
+  navs.forEach(b => { b.innerHTML = icon('arrow'); b.addEventListener('click', () =>
+    shelf.scrollBy({ left: +b.dataset.dir * shelf.clientWidth * 0.8, behavior: reduced ? 'auto' : 'smooth' })); });
+  function updateNav() {
+    const max = shelf.scrollWidth - shelf.clientWidth - 8;
+    navs[0].hidden = shelf.scrollLeft <= 8;
+    navs[1].hidden = shelf.scrollLeft >= max;
+  }
+  shelf.addEventListener('scroll', updateNav, { passive: true });
+  addEventListener('resize', updateNav);
+
+  const toggleMark = id => {
+    marks.toggle(id);
+    $$(`[data-mark="${CSS.escape(id)}"]`).forEach(btn => btn.outerHTML = ribbon(id, byId.get(id)?.title));
+    drawChips();
+    if (state.cat === 'Marcados') draw();
+  };
+
+  filters.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    state.cat = b.dataset.cat;
+    $$('.chip', filters).forEach(x => x.setAttribute('aria-pressed', x === b));
+    draw();
+  });
+  let tm; $('#book-search').addEventListener('input', e => { clearTimeout(tm); tm = setTimeout(() => { state.q = e.target.value; draw(); }, 120); });
+
+  shelf.addEventListener('click', e => {
+    const m = e.target.closest('[data-mark]');
+    if (m) { toggleMark(m.dataset.mark); return; }
     const btn = e.target.closest('[data-book]'); if (!btn) return;
-    const b = items[+btn.dataset.book]; const url = safeUrl(b.url);
+    const b = byId.get(btn.dataset.book); const url = safeUrl(b.url);
     openModal(`<div class="book-detail">
-      <div class="book">${bookCover(b)}</div>
+      <div class="book">${bookCover(b)}${ribbon(b._id, b.title)}</div>
       <div>
         <p class="eyebrow">${esc(b.area)}</p>
         <h3 id="modal-title" class="title" style="font-size:28px">${esc(b.title)}</h3>
@@ -366,6 +447,12 @@ function renderBooks(c) {
       </div>
     </div>`);
   });
+  $('#modal-body').addEventListener('click', e => {
+    const m = e.target.closest('[data-mark]'); if (m) toggleMark(m.dataset.mark);
+  });
+
+  drawChips();
+  draw();
 }
 
 // ───────────── videos ─────────────
