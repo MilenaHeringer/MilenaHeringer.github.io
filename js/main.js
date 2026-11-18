@@ -455,6 +455,89 @@ function renderBooks(c) {
   draw();
 }
 
+// ───────────── instagram ─────────────
+/** "https://www.instagram.com/p/ABC/?igsh=…" → embed URL, or '' when it is not a post/reel link. */
+function igEmbed(url) {
+  const m = String(url || '').match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:[\w.]+\/)?(p|reels?|tv)\/([\w-]+)/i);
+  if (!m) return '';
+  const kind = m[1].toLowerCase().startsWith('reel') ? 'reel' : m[1].toLowerCase();
+  return `https://www.instagram.com/${kind}/${m[2]}/embed/`;
+}
+/** One Instagram card: our own looping .mp4 when there is a file, else Instagram's embed. */
+function igCard(p, i) {
+  const file = safeUrl(p.file), link = safeUrl(p.url);
+  if (file) {
+    const poster = safeUrl(p.poster);
+    return `<figure class="insta-post insta-post--video reveal">
+      <video src="${esc(file)}"${poster ? ` poster="${esc(poster)}"` : ''} data-auto muted loop playsinline preload="metadata" aria-label="Vídeo do Instagram ${i + 1}"></video>
+      ${soundBtn()}
+      ${link ? `<a class="insta-link" href="${esc(link)}" target="_blank" rel="noopener">${icon('instagram')}<span>Ver no Instagram</span></a>` : ''}
+    </figure>`;
+  }
+  return `<div class="insta-post reveal">
+    <iframe src="${esc(p.embed)}" title="Post do Instagram ${i + 1}" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>`;
+}
+// ── self-playing clips (muted, looping, play while on screen; tap pauses; one with sound at a time) ──
+const soundBtn = () => `<button class="insta-sound" type="button" aria-pressed="false" aria-label="Ligar o som">${icon('muted')}</button>`;
+const autoIO = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(({ target: v, isIntersecting }) => {
+  if (isIntersecting && !v.parentElement.classList.contains('is-paused')) v.play().catch(() => {});
+  else if (!isIntersecting) v.pause();
+}), { threshold: 0.5 }) : null;
+function observeAutoVideos(root) { $$('video[data-auto]', root).forEach(v => autoIO ? autoIO.observe(v) : v.play().catch(() => {})); }
+function bindAutoVideos(root) {
+  root.addEventListener('click', e => {
+    const b = e.target.closest('.insta-sound');
+    if (b) {
+      const v = b.parentElement.querySelector('video');
+      const on = v.muted;              // currently muted → turn sound on
+      $$('video[data-auto]').forEach(x => { if (x === v) return; x.muted = true;
+        const xb = x.parentElement.querySelector('.insta-sound');
+        if (xb) { xb.setAttribute('aria-pressed', 'false'); xb.setAttribute('aria-label', 'Ligar o som'); xb.innerHTML = icon('muted'); } });
+      v.muted = !on;
+      b.setAttribute('aria-pressed', on); b.setAttribute('aria-label', on ? 'Desligar o som' : 'Ligar o som'); b.innerHTML = icon(on ? 'sound' : 'muted');
+      if (on) v.play().catch(() => {});
+      return;
+    }
+    const v = e.target.closest('video[data-auto]');
+    if (v) { v.paused ? v.play().catch(() => {}) : v.pause(); v.parentElement.classList.toggle('is-paused', v.paused); }
+  });
+}
+function setupInstaVideos(grid) {
+  const vids = $$('video', grid);
+  if (!vids.length) return;
+  // each card takes the shape of its own video (vertical reel, 3:4 or horizontal)
+  const shape = v => { if (!v.videoWidth) return; const f = v.parentElement;
+    f.style.aspectRatio = `${v.videoWidth} / ${v.videoHeight}`; f.classList.toggle('insta-post--wide', v.videoWidth > v.videoHeight); };
+  vids.forEach(v => { v.readyState >= 1 ? shape(v) : v.addEventListener('loadedmetadata', () => shape(v), { once: true }); });
+  bindAutoVideos(grid);
+  observeAutoVideos(grid);
+}
+function renderInstagram(c) {
+  const I = c.instagram || {};
+  const posts = (I.posts || []).map(p => (typeof p === 'string' ? { url: p } : p))
+    .map(p => ({ ...p, embed: igEmbed(p.url) })).filter(p => safeUrl(p.file) || p.embed);
+  if (!posts.length) return;   // section and menu link stay hidden
+  $('#instagram').hidden = false;
+  $('#nav-instagram').hidden = false;
+  $('#insta-grid').innerHTML = posts.map(igCard).join('');
+  setupInstaVideos($('#insta-grid'));
+  const profiles = (c.socials || []).filter(s => s.network === 'instagram' && safeUrl(s.url));
+  $('#insta-profiles').innerHTML = profiles.map(s =>
+    `<a class="btn btn-ghost" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener"><span class="btn-ic">${icon('instagram')}</span>${esc(s.handle || s.label)}</a>`).join('');
+  // Instagram's embed page reports its height; resize the matching frame.
+  addEventListener('message', e => {
+    if (e.origin !== 'https://www.instagram.com') return;
+    let d = e.data; try { if (typeof d === 'string') d = JSON.parse(d); } catch { return; }
+    const h = d?.type === 'MEASURE' && +d.details?.height;
+    if (!h) return;
+    const f = $$('#insta-grid iframe').find(x => x.contentWindow === e.source);
+    if (f) { f.style.height = `${Math.ceil(h)}px`; f.parentElement.classList.add('is-ready'); }
+  });
+  // stop the loading shimmer once a frame has loaded, even without a height message
+  $$('#insta-grid iframe').forEach(f => f.addEventListener('load', () => f.parentElement.classList.add('is-ready')));
+}
+
 // ───────────── videos ─────────────
 function renderVideos(c) {
   const V = c.videos || {};
@@ -467,10 +550,18 @@ function renderVideos(c) {
   const ig = (c.socials || []).find(s => s.network === 'youtube' && safeUrl(s.url));
   const draw = cat => {
     const list = items.filter(v => cat === 'Todos' || v.category === cat);
+    queueMicrotask(() => observeAutoVideos($('#video-grid')));
     $('#video-grid').innerHTML = list.length ? list.map((v, i) => {
       const id = youtubeId(v.url);
       const file = safeUrl(v.file);
       const thumb = safeUrl(v.thumbnail) || (id && !file ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : '');
+      if (file) return `<article class="video video--auto${list.length === 1 ? ' video--feature' : ''}">
+        <div class="thumb thumb--auto">
+          <video src="${esc(file)}"${thumb ? ` poster="${esc(thumb)}"` : ''} data-auto muted loop playsinline preload="metadata" aria-label="${esc(v.title)}"></video>
+          ${soundBtn()}
+        </div>
+        <div class="video-body">${v.category ? `<span class="tag">${esc(v.category)}</span>` : ''}<h3>${esc(v.title)}</h3><p>${esc(v.description)}</p></div>
+      </article>`;
       return `<article class="video">
         <button class="thumb" data-video="${items.indexOf(v)}" aria-label="Assistir: ${esc(v.title)}">
           ${thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy">` : file ? `<video src="${esc(file)}#t=0.5" preload="metadata" muted playsinline tabindex="-1"></video>` : ''}<span class="play">${icon('play')}</span>
@@ -495,6 +586,7 @@ function renderVideos(c) {
     openModal(`<div class="modal-video"><iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
       <div class="modal-pad"><h3 id="modal-title">${esc(v.title)}</h3><p>${esc(v.description)}</p></div>`);
   });
+  bindAutoVideos($('#video-grid'));
   draw('Todos');
 }
 
@@ -593,7 +685,7 @@ async function boot() {
   catch (e) { console.error(e); done(); return; }
   bindText(content);
   renderHero(content); renderAbout(content); renderJourney(content); renderFuture(content);
-  renderHobbies(content); renderStudy(content); renderBooks(content); renderVideos(content); renderContact(content); renderSocials(content);
+  renderHobbies(content); renderStudy(content); renderBooks(content); renderVideos(content); renderInstagram(content); renderContact(content); renderSocials(content);
   fillIcons();
   setupNav(); setupReveal(); fitName();
   addEventListener('resize', fitName);

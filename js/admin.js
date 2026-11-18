@@ -110,6 +110,15 @@ const T = {
       { path: 'videos.title', label: 'Título', type: 'text' },
       { path: 'videos.text', label: 'Texto', type: 'textarea' },
       { path: 'videos.categories', label: 'Categorias (uma por linha)', type: 'lines' }]}]},
+  instagram: { label: 'Instagram', sections: [
+    { title: 'Posts do Instagram', help: 'Cole o link do post ou reel (no Instagram: "…" → "Copiar link"). Para o vídeo rodar sozinho, sem a moldura do Instagram, escolha também o arquivo .mp4 do reel (no Instagram: "…" → "Baixar") e envie-o para a pasta videos/. Sem arquivo, o post aparece com a moldura do Instagram.', fields: [
+      { path: 'instagram.posts', label: '', type: 'list', itemLabel: 'url', newItem: () => ({ url: '', file: '', poster: '' }), fields: [
+        { key: 'url', label: 'Link do post ou reel', type: 'url' },
+        { key: 'file', label: 'Arquivo do vídeo (.mp4) — opcional', type: 'video', folder: 'videos' },
+        { key: 'poster', label: 'Imagem de capa do vídeo — opcional', type: 'image', folder: 'videos' }]}]},
+    { title: 'Textos', fields: [
+      { path: 'instagram.title', label: 'Título', type: 'text' },
+      { path: 'instagram.text', label: 'Texto', type: 'textarea' }]}]},
   contato: { label: 'Contato', sections: [
     { title: 'Contato e parcerias', fields: [
       { path: 'contact.title', label: 'Título', type: 'text' },

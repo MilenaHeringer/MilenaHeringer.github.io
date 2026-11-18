@@ -7,7 +7,7 @@
 <meta name="description" content="O cantinho da Milena Heringer: acadêmica de Odontologia, pianista e apaixonada por estudar. Resumos de Odontologia, estante de livros, trajetória e um pouco da rotina.">
 <meta name="theme-color" content="#FAF9F7">
 <meta name="color-scheme" content="light">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cdn.jsdelivr.net; frame-src https://www.youtube-nocookie.com; media-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cdn.jsdelivr.net; frame-src https://www.youtube-nocookie.com https://www.instagram.com; media-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -46,6 +46,7 @@
     <a href="#resumos">Resumos</a>
     <a href="#livros">Livros</a>
     <a href="#videos">Vídeos</a>
+    <a href="#instagram" id="nav-instagram" hidden>Instagram</a>
     <a href="#contato">Contato</a>
   </nav>
   <button class="burger" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span><span></span></button>
@@ -200,6 +201,19 @@
       </header>
       <div class="chips reveal" id="video-filters" role="group" aria-label="Filtrar vídeos"></div>
       <div class="video-grid" id="video-grid"></div>
+    </div>
+  </section>
+
+  <!-- 8b · INSTAGRAM -->
+  <section class="insta section" id="instagram" aria-labelledby="insta-title" hidden>
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Direto do Instagram</p>
+        <h2 id="insta-title" class="title" data-bind="instagram.title"></h2>
+        <p class="lead" data-bind="instagram.text"></p>
+      </header>
+      <div class="insta-grid" id="insta-grid"></div>
+      <div class="insta-profiles reveal" id="insta-profiles"></div>
     </div>
   </section>
 

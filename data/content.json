@@ -133,7 +133,26 @@
     "title": "Um pouco da minha rotina em vídeos! 🎬",
     "text": "Por aqui você encontra alguns dos conteúdos que compartilho nas redes sociais: rotina universitária, estudos, curiosidades sobre Odontologia, experiências na graduação e outros assuntos que fazem parte do meu dia a dia.",
     "categories": ["Rotina universitária", "Estudos", "Odontologia", "Curiosidades"],
-    "items": []
+    "items": [
+      {
+        "title": "Tecido Conjuntivo · Histologia",
+        "url": "",
+        "file": "videos/video-destaque.mp4",
+        "category": "Estudos",
+        "description": "Uma aula rápida e ilustrada sobre o tecido conjuntivo propriamente dito: o que é, como se organiza e onde aparece no corpo.",
+        "thumbnail": "videos/video-destaque.jpg"
+      }
+    ]
+  },
+  "instagram": {
+    "title": "Um pouquinho do meu Instagram 📸",
+    "text": "Alguns posts que compartilhei por lá: rotina, estudos e o dia a dia na Odontologia.",
+    "posts": [
+      { "url": "https://www.instagram.com/odonto_withmiih/", "file": "videos/reel-3-dicas.mp4", "poster": "videos/reel-3-dicas.jpg" },
+      { "url": "https://www.instagram.com/odonto_withmiih/", "file": "videos/reel-fisiologia-do-pensamento.mp4", "poster": "videos/reel-fisiologia-do-pensamento.jpg" },
+      { "url": "https://www.instagram.com/odonto_withmiih/", "file": "videos/reel-conversa.mp4", "poster": "videos/reel-conversa.jpg" },
+      { "url": "https://www.instagram.com/odonto_withmiih/", "file": "videos/reel-estudos.mp4", "poster": "videos/reel-estudos.jpg" }
+    ]
   },
   "socials": [
     { "network": "instagram", "label": "Instagram · Odonto", "handle": "@odonto_withmiih", "url": "https://www.instagram.com/odonto_withmiih/" },

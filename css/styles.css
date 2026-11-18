@@ -531,6 +531,29 @@ button { font: inherit; color: inherit; }
 
 /* ── videos ── */
 .videos { background: var(--cream); }
+/* ── instagram ── */
+.insta { background: linear-gradient(var(--cream), var(--off)); }
+.insta-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 22px; margin-top: 14px; }
+.insta-post { position: relative; border-radius: var(--r); overflow: hidden; background: #fff; box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line); flex: 1 1 326px; max-width: 370px; min-width: min(100%, 326px); }
+.insta-post::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(110deg, transparent 30%, rgba(244, 231, 233, .8) 50%, transparent 70%) 0 0 / 200% 100%, #fff; animation: insta-shimmer 1.4s linear infinite; transition: opacity .4s; pointer-events: none; }
+.insta-post.is-ready::before { opacity: 0; animation: none; }
+.insta-post iframe { position: relative; display: block; width: 100%; height: 560px; border: 0; background: transparent; }
+@keyframes insta-shimmer { to { background-position: -200% 0, 0 0; } }
+.insta-post--video { margin: 0; aspect-ratio: 9 / 16; background: var(--wine-3); }
+.insta-post--video::before { display: none; }
+.insta-post--wide { flex-basis: 100%; max-width: 880px; }
+.insta-post--video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+.insta-post--video::after { content: ""; position: absolute; inset: auto 0 0; height: 30%; background: linear-gradient(transparent, rgba(44, 23, 32, .55)); pointer-events: none; }
+.insta-sound, .insta-link { position: absolute; z-index: 2; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; color: #fff; cursor: pointer;
+  background: rgba(44, 23, 32, .45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background .25s, transform .25s var(--ease); }
+.insta-sound { top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%; font-size: 20px; }
+.insta-sound:hover, .insta-link:hover { background: var(--wine); transform: translateY(-1px); }
+.insta-link { left: 12px; bottom: 12px; min-height: 40px; padding: 0 14px; border-radius: 999px; font: 600 13px/1 var(--f-sans); text-decoration: none; }
+.insta-post--video.is-paused::after { height: 100%; background: rgba(44, 23, 32, .35) center / 64px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5.5v13l10.5-6.5L8 5.5Z'/%3E%3C/svg%3E"); }
+.insta-post--video video[controls] { cursor: auto; }
+.insta-post--video:has(video[controls])::after { display: none; }
+.insta-profiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+.insta-profiles:empty { display: none; }
 .video-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); margin-top: 14px; }
 .video { border-radius: var(--r); background: #fff; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .45s var(--ease), box-shadow .45s; }
 .video:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
@@ -541,6 +564,12 @@ button { font: inherit; color: inherit; }
 .thumb .play .ic { fill: currentColor; margin-left: 3px; }
 .video:hover .play { transform: scale(1.1); }
 .video-body { padding: 16px 18px 20px; }
+.video--feature { grid-column: 1 / -1; width: 100%; max-width: 880px; justify-self: center; }
+.video--auto:hover { transform: none; }
+.thumb--auto { cursor: default; }
+.thumb--auto video { pointer-events: auto; cursor: pointer; }
+.thumb--auto.is-paused::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(44, 23, 32, .35) center / 64px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5.5v13l10.5-6.5L8 5.5Z'/%3E%3C/svg%3E"); }
+@media (min-width: 900px) { .video--feature .video-body { padding: 20px 26px 24px; } .video--feature h3 { font-size: 24px; } }
 .video-body .tag { font: 700 10.5px/1.2 var(--f-sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold-2); }
 .video-body h3 { margin: 6px 0 6px; font: 600 19px/1.3 var(--f-serif); color: var(--wine); }
 .video-body p { margin: 0; font-size: 14.5px; color: var(--muted); }
@@ -600,7 +629,7 @@ button { font: inherit; color: inherit; }
   html { scroll-behavior: auto; }
   .js .reveal, .js .polaroid.reveal { opacity: 1; transform: none; transition: none; }
   .js .polaroid.reveal { transform: rotate(-3deg); }
-  .hero-pattern, .scroll-hint span, .portrait-orbit { animation: none; }
+  .hero-pattern, .scroll-hint span, .portrait-orbit, .insta-post::before { animation: none; }
   .orbit, .badge > i { animation-duration: 90s; }
   .btn:hover, .doc:hover, .hobby:hover, .video:hover, .tl-card:hover, .book:hover, .book:focus-within { transform: none; }
 }
